@@ -158,6 +158,7 @@ mkinitcpio-utils
 mkinitcpio-archiso
 mkinitcpio-openswap
 mkinitcpio-nfs-utils
+linux-firmware-nvidia
 
 ### Tools
 
