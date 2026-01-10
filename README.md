@@ -5,7 +5,7 @@
 <h1 align="center">🔥 XeroLinux KDE Plasma 🔥</h1>
 
 <p align="center">
-    <img src="https://i.imgur.com/qvFuDYO.png" alt="logo">
+    <img src="https://i.imgur.com/mEjZTmG.jpeg" alt="Desktop">
 </p>
 
 ### Profiles
