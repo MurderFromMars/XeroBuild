@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Logo image path (adjust this to where your logo actually is)
+LOGO="/usr/share/logos/unav.png"
+RESIZED_LOGO="/tmp/resized_unav.png"
+
+# Resize the logo to a larger, centered size
+magick "$LOGO" -resize 200x140 "$RESIZED_LOGO"
+
+# Main message
+MESSAGE="<b>XeroLinux Toolkit :</b>\n\nThe <b>XeroLinux Toolkit</b> is only available on the unlocked ISO. Once you donate you will get a code that will give you access to the full ISO with installer as well as the toolkit and so much more..."
+
+# Loop the dialog to prevent exit on button click
+while true; do
+  response=$(yad --center \
+      --width=300 --height=200 \
+      --title="XeroLinux Toolkit Unavailable" \
+      --image="$RESIZED_LOGO" \
+      --image-on-top \
+      --text="$MESSAGE" \
+      --wrap \
+      --buttons-layout=center \
+      --button="Main Site!:1" \
+      --button="Mastodon!:2" \
+      --button="Discord!:3" \
+      --button="YouTube!:4" \
+      --button="Unlocked ISOs!:5")
+
+  exit_code=$?
+
+  case $exit_code in
+    1) xdg-open "https://xerolinux.xyz" ;;
+    2) xdg-open "https://fosstodon.org/@XeroLinux" ;;
+    3) xdg-open "https://discord.xerolinux.xyz" ;;
+    4) xdg-open "https://youtube.com/@XeroLinux" ;;
+    5) xdg-open "https://ko-fi.com/xerolinux/shop" ;;
+    0) break ;; # User closed the window
+    *) break ;;
+  esac
+
+done

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# Detect Intel/AMD GPUs and remove the opposite meta package on Arch.
+# Hybrid systems (Intel + AMD) -> keep both (do nothing).
+# Intended for chroot use (no sudo).
+
+set -u
+
+# Dependencies check
+if ! command -v lspci >/dev/null 2>&1; then
+  echo
+  echo "❌ lspci not found. Install pciutils first."
+  exit 1
+fi
+
+# Collect GPU vendors from display-class devices
+mapfile -t VENDORS < <(
+  lspci | grep -E "VGA|Display|3D controller" \
+  | grep -oE "AMD|Intel" \
+  | sort -u
+)
+
+# Extract presence flags
+HAS_AMD=0
+HAS_INTEL=0
+for v in "${VENDORS[@]}"; do
+  [[ "$v" == "AMD" ]] && HAS_AMD=1
+  [[ "$v" == "Intel" ]] && HAS_INTEL=1
+done
+
+# No Intel/AMD GPUs found (e.g., NVIDIA-only or headless)
+if [[ $HAS_AMD -eq 0 && $HAS_INTEL -eq 0 ]]; then
+  echo
+  echo "ℹ️ No Intel/AMD GPU detected (nothing to do)."
+  exit 0
+fi
+
+# Hybrid case: both present -> keep both
+if [[ $HAS_AMD -eq 1 && $HAS_INTEL -eq 1 ]]; then
+  echo
+  echo "🧠 Hybrid Intel+AMD detected. Keeping both driver meta-packages."
+  exit 0
+fi
+
+# Single-vendor cases
+if [[ $HAS_AMD -eq 1 ]]; then
+  echo
+  echo "🔍 AMD GPU detected. Removing intel-drv (if installed)…"
+  echo
+  pacman -Rns --noconfirm intel-drv || echo && echo "⚠️ intel-drv not installed."
+  echo
+  echo "✅ Done."
+  exit 0
+fi
+
+if [[ $HAS_INTEL -eq 1 ]]; then
+  echo
+  echo "🔍 Intel GPU detected. Removing amd-drv (if installed)…"
+  echo
+  pacman -Rns --noconfirm amd-drv || echo &&  echo "⚠️ amd-drv not installed."
+  echo
+  echo "✅ Done."
+  exit 0
+fi
