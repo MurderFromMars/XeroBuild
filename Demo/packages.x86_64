@@ -158,7 +158,6 @@ mkinitcpio-utils
 mkinitcpio-archiso
 mkinitcpio-openswap
 mkinitcpio-nfs-utils
-linux-firmware-nvidia
 
 ### Tools
 
@@ -216,6 +215,20 @@ lib32-mesa
 xf86-video-qxl
 xf86-video-fbdev
 lib32-mesa-utils
+
+### nVidia
+
+libvdpau
+nvidia-utils
+opencl-nvidia
+libvdpau-va-gl
+nvidia-settings
+nvidia-open-dkms
+vulkan-icd-loader
+lib32-nvidia-utils
+lib32-opencl-nvidia
+linux-firmware-nvidia
+lib32-vulkan-icd-loader
 
 ### Printer/Scanner
 
