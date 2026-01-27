@@ -106,7 +106,6 @@ wireguard-tools
 ### Kernel/Firmware
 
 linux
-scx-km
 linux-atm
 linux-headers
 
@@ -140,6 +139,7 @@ chaotic-mirrorlist
 ### XeroLinux Tools
 
 preload
+xero-welcome
 xero-toolkit
 extra-scripts
 calamaresx-app
