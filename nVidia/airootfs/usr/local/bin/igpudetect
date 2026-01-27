@@ -46,7 +46,7 @@ if [[ $HAS_AMD -eq 1 ]]; then
   echo
   echo "🔍 AMD GPU detected. Removing intel-drv (if installed)…"
   echo
-  pacman -Rns --noconfirm intel-drv || echo && echo "⚠️ intel-drv not installed."
+  pacman -Rns --noconfirm intel-drv || echo "⚠️ intel-drv not installed."
   echo
   echo "✅ Done."
   exit 0
@@ -56,7 +56,7 @@ if [[ $HAS_INTEL -eq 1 ]]; then
   echo
   echo "🔍 Intel GPU detected. Removing amd-drv (if installed)…"
   echo
-  pacman -Rns --noconfirm amd-drv || echo &&  echo "⚠️ amd-drv not installed."
+  pacman -Rns --noconfirm amd-drv || echo "⚠️ amd-drv not installed."
   echo
   echo "✅ Done."
   exit 0

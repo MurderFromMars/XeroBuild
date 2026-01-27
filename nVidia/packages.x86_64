@@ -7,7 +7,6 @@
 base
 archiso
 base-devel
-b43-fwcutter
 
 ### FS Tools
 
@@ -26,6 +25,7 @@ dosfstools
 exfatprogs
 tpm2-tools
 fsarchiver
+btrfs-progs
 squashfs-tools
 
 ### HDD Tools
@@ -106,6 +106,7 @@ wireguard-tools
 ### Kernel/Firmware
 
 linux
+scx-km
 linux-atm
 linux-headers
 
@@ -140,21 +141,18 @@ chaotic-mirrorlist
 
 preload
 xero-toolkit
-calamares-app
 extra-scripts
+calamaresx-app
 desktop-config
 xero-gpu-tools
-calamares-nv-cfg
+calamaresx-nv-cfg
 
 ### Build Stuff
 
-xmlto
 boost
 ckbcomp
 kpmcore
-yaml-cpp
 boost-libs
-gtk-update-icon-cache
 xdg-terminal-exec-git
 
 ### mkinitcpio stuff
@@ -171,6 +169,7 @@ mkinitcpio-nfs-utils
 falkon
 hblock
 cryptsetup
+imagemagick
 brightnessctl
 switcheroo-control
 power-profiles-daemon
@@ -194,10 +193,8 @@ xorg-xwayland
 ### Essentials
 
 xmlto
-ckbcomp
 yaml-cpp
 kirigami
-boost-libs
 polkit-gnome
 gtk-update-icon-cache
 

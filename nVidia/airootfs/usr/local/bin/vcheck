@@ -72,3 +72,5 @@ if [ $result = "none" ];
 			echo "Removed qemu-guest-agent"
 		fi
 fi
+
+rm /usr/local/bin/vcheck

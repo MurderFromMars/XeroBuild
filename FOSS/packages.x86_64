@@ -26,6 +26,7 @@ dosfstools
 exfatprogs
 tpm2-tools
 fsarchiver
+btrfs-progs
 squashfs-tools
 
 ### HDD Tools
@@ -106,6 +107,7 @@ wireguard-tools
 ### Kernel/Firmware
 
 linux
+scx-km
 linux-atm
 linux-headers
 
@@ -140,9 +142,9 @@ chaotic-mirrorlist
 
 preload
 xero-toolkit
-calamares-app
 extra-scripts
-calamares-cfg
+calamaresx-app
+calamaresx-cfg
 desktop-config
 xero-gpu-tools
 
