@@ -441,8 +441,9 @@ python-websockets
 
 ### Essentials
 
-sddm
+#sddm
 xdg-user-dirs
+plasma-login-manager
 
 ### Others
 
@@ -500,7 +501,7 @@ drkonqi
 kwrited
 kgamma
 kscreen
-sddm-kcm
+#sddm-kcm
 #kwin-x11
 kmenuedit
 bluedevil
