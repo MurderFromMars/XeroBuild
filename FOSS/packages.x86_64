@@ -27,6 +27,7 @@ exfatprogs
 tpm2-tools
 fsarchiver
 btrfs-progs
+zram-generator
 squashfs-tools
 
 ### HDD Tools
