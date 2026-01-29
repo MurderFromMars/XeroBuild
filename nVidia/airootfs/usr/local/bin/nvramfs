@@ -49,4 +49,47 @@ if [ -f /etc/default/grub ];then
 
 fi
 
+# === Laptop detection for power management ===
+echo "Checking for laptop..."
+chassis=$(cat /sys/class/dmi/id/chassis_type 2>/dev/null)
+if [[ "$chassis" =~ ^(9|10|14|31)$ ]] || [[ -d /sys/class/power_supply/BAT0 ]]; then
+    echo "Laptop detected - adding nVidia power management rules"
+    mkdir -p /etc/udev/rules.d
+    if [[ -f /etc/udev/rules.d/80-nvidia-pm.rules ]]; then
+        if ! grep -q "0x10de" /etc/udev/rules.d/80-nvidia-pm.rules; then
+            echo 'ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", ATTR{power/control}="auto"' >> /etc/udev/rules.d/80-nvidia-pm.rules
+        fi
+    else
+        cat > /etc/udev/rules.d/80-nvidia-pm.rules << 'EOF'
+# Enable runtime PM for nVidia GPUs
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", ATTR{power/control}="auto"
+EOF
+    fi
+else
+    echo "Desktop detected - skipping power management rules"
+fi
+
+# === Wayland/KDE environment variables ===
+echo "Adding nVidia Wayland environment variables"
+if [[ -f /etc/environment ]]; then
+    grep -q "__GL_GSYNC_ALLOWED" /etc/environment || echo "__GL_GSYNC_ALLOWED=1" >> /etc/environment
+    grep -q "__GL_VRR_ALLOWED" /etc/environment || echo "__GL_VRR_ALLOWED=1" >> /etc/environment
+else
+    cat > /etc/environment << 'EOF'
+__GL_GSYNC_ALLOWED=1
+__GL_VRR_ALLOWED=1
+EOF
+fi
+
+# === Modprobe options for suspend/resume ===
+echo "Adding nVidia modprobe options"
+mkdir -p /etc/modprobe.d
+if [[ -f /etc/modprobe.d/nvidia.conf ]]; then
+    grep -q "NVreg_PreserveVideoMemoryAllocations" /etc/modprobe.d/nvidia.conf || echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" >> /etc/modprobe.d/nvidia.conf
+else
+    cat > /etc/modprobe.d/nvidia.conf << 'EOF'
+options nvidia NVreg_PreserveVideoMemoryAllocations=1
+EOF
+fi
+
 rm /usr/local/bin/nvramfs
