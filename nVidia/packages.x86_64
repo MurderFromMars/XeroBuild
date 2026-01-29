@@ -224,6 +224,8 @@ lib32-mesa-utils
 ### nVidia
 
 libvdpau
+envycontrol
+nvidia-prime
 nvidia-utils
 opencl-nvidia
 libvdpau-va-gl
