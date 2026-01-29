@@ -42,7 +42,6 @@ if [ -f /etc/default/grub ];then
 
         echo "Updating Grub"
 
-        grub-install --target=x86_64-efi --efi-directory=/boot/efi --force --recheck
         grub-mkconfig -o /boot/grub/grub.cfg
 
         echo "Writing grub to /bootloader"
