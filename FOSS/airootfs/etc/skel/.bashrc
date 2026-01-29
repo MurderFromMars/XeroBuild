@@ -88,7 +88,6 @@ alias jctl='journalctl -p 3 -xb'
 alias breload='cd ~ && source ~/.bashrc'
 alias zreload='cd ~ && source ~/.zshrc'
 alias pingme='ping -c64 github.com'
-alias cls='clear && neofetch'
 alias traceme='traceroute github.com'
 
 #hardware info --short
