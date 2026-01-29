@@ -11,13 +11,30 @@ NC='\033[0m'
 # Website	:	https://xerolinux.xyz
 ###############################################################################
 
-if lsblk -f | grep -q "btrfs"; then
+# Wait for pacman lock
+seconds=0
+while [ -e "/var/lib/pacman/db.lck" ]; do
+    echo 'Pacman is not ready yet. Will try again in 5 seconds.'
+    seconds=$(($seconds + 5))
+    sleep 5
+    if [[ "$seconds" == "30" ]]; then
+        echo 'Warning: removing pacman db.lck!'
+        rm /var/lib/pacman/db.lck
+    fi
+done
+
+HAS_BTRFS=0
+HAS_XFS=0
+lsblk -f | grep -q "btrfs" && HAS_BTRFS=1
+lsblk -f | grep -q "xfs" && HAS_XFS=1
+
+if [[ $HAS_BTRFS -eq 1 && $HAS_XFS -eq 1 ]]; then
+    echo -e "${GREEN}Both BTRFS and XFS partitions found. Keeping both Progs.${NC}"
+elif [[ $HAS_BTRFS -eq 1 ]]; then
     echo -e "${GREEN}BTRFS partitions found. Removing XFS-Progs.${NC}"
-    echo
     pacman -Rdd --noconfirm xfsprogs
-elif lsblk -f | grep -q "xfs"; then
+elif [[ $HAS_XFS -eq 1 ]]; then
     echo -e "${RED}XFS partitions found. Removing BTRFS-Progs.${NC}"
-    echo
     pacman -Rdd --noconfirm btrfs-progs
 else
     echo -e "${BLUE}No XFS or BTRFS partitions found. Removing both Progs Packages.${NC}"

@@ -5,7 +5,19 @@
 # Website	:	https://xerolinux.xyz
 ###############################################################################
 
-cpu_vendor=$(cat /proc/cpuinfo | awk '/vendor_id/ {print $3}' | head -n 1)
+# Wait for pacman lock
+seconds=0
+while [ -e "/var/lib/pacman/db.lck" ]; do
+    echo 'Pacman is not ready yet. Will try again in 5 seconds.'
+    seconds=$(($seconds + 5))
+    sleep 5
+    if [[ "$seconds" == "30" ]]; then
+        echo 'Warning: removing pacman db.lck!'
+        rm /var/lib/pacman/db.lck
+    fi
+done
+
+cpu_vendor=$(awk '/vendor_id/ {print $3; exit}' /proc/cpuinfo)
 
 if [[ "$cpu_vendor" == "GenuineIntel" ]]; then
     echo "Intel CPU detected."
