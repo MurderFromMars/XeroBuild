@@ -318,6 +318,7 @@ cloud-init
 openconnect
 traceroute
 b43-fwcutter
+rtw89-dkms-git
 networkmanager
 nm-cloud-setup
 wireless-regdb

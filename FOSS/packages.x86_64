@@ -301,6 +301,7 @@ pptpclient
 cloud-init
 openconnect
 traceroute
+rtw89-dkms-git
 networkmanager
 nm-cloud-setup
 wireless-regdb
