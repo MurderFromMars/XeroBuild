@@ -10,7 +10,7 @@
 
 ### Profiles
 
-This project now has 2 profiles, `FOSS` which is for **Intel/AMD** systems and `nVidia` for **nVidia RTX** users. The `Demo` profile is to be ignored as it is only intended for *Demonstration* purposes. Also one important thing to note is; that *older* **nVidia** GPUs are no longer supported. We follow **Arch Upstream**. If they drop support, then so do we. The whole point of **XeroLinux** was to not stray too far from **Arch Linux**. Just something to keep in mind going into this. 
+This project now has 2 profiles, `FOSS` which is for **Intel/AMD** systems and `nVidia` for **nVidia RTX** users. Also one important thing to note is; that *older* **nVidia** GPUs are no longer supported. We follow **Arch Upstream**. If they drop support, then so do we. The whole point of **XeroLinux** was to not stray too far from **Arch Linux**. Just something to keep in mind going into this. 
 
 ### Building ISO
 
