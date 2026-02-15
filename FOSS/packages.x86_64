@@ -314,7 +314,6 @@ systemd-resolvconf
 ### Virtual Machine
 
 spice-vdagent
-open-vm-tools
 qemu-guest-agent
 virtualbox-guest-utils
 
