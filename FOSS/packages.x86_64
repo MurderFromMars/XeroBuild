@@ -524,6 +524,7 @@ systemsettings
 kde-gtk-config
 layer-shell-qt
 plasma-desktop
+plasma-keyboard
 polkit-kde-agent
 plasma-workspace
 kdeplasma-addons
