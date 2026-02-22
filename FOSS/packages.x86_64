@@ -248,12 +248,30 @@ xf86-input-elographics
 
 gstreamer
 gst-libav
+gst-plugin-va
+gst-plugin-hip
+gst-plugin-gif
+gst-plugin-mp4
+gst-plugin-wpe2
+gst-plugin-json
+gst-plugin-fmp4
+gst-plugin-ffv1
 gst-plugins-bad
 gst-plugins-base
 gst-plugins-ugly
 gst-plugins-good
+gst-plugin-dav1d
+gst-plugin-qmlgl
+gst-plugin-regex
+gst-plugin-claxon
 gst-plugins-espeak
 gst-plugin-pipewire
+gst-plugin-livesync
+gst-plugin-gopbuffer
+gst-plugin-libcamera
+gst-plugin-elevenlabs
+gst-plugin-fallbackswitch
+gst-webrtc-signalling-server
 
 ## Pipewire Audio
 
@@ -273,7 +291,6 @@ bluez
 bluez-libs
 bluez-utils
 bluez-tools
-bluez-plugins
 bluez-hid2hci
 
 ### Networking
@@ -349,7 +366,7 @@ ttf-hack-nerd
 ttf-ubuntu-font-family
 awesome-terminal-fonts
 ttf-jetbrains-mono-nerd
-adobe-source-sans-pro-fonts
+adobe-source-sans-fonts
 
 ### Kate Plugins
 
@@ -398,7 +415,7 @@ gvfs
 mtpfs
 udiskie
 udisks2
-ldmtool
+libldm
 gvfs-afc
 gvfs-mtp
 gvfs-nfs
