@@ -39,7 +39,6 @@ usbmuxd
 usbutils
 testdisk
 ddrescue
-timeshift
 partclone
 partimage
 clonezilla
@@ -625,6 +624,7 @@ keditbookmarks
 kdebugsettings
 kwalletmanager
 dolphin-plugins
+partitionmanager
 
 ### KDE Multimedia Selection
 ### https://archlinux.org/groups/x86_64/kde-multimedia/
