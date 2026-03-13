@@ -380,6 +380,7 @@ wpa_supplicant
 modemmanager-qt
 openpgp-card-tools
 systemd-resolvconf
+linux-firmware-intel
 
 ### Virtual Machine
 
