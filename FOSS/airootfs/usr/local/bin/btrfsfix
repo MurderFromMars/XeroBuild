@@ -1,0 +1,12 @@
+#!/bin/bash
+#set -e
+###############################################################################
+# Author	:	DarkXero
+# Website	:	https://xerolinux.xyz
+###############################################################################
+
+if [ "$(stat -f -c %T /)" = "btrfs" ]; then
+    btrfs subvolume set-default /
+fi
+
+rm /usr/local/bin/btrfsfix
