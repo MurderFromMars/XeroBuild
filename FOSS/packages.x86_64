@@ -438,7 +438,6 @@ kwin-effect-rounded-corners-git
 
 ### Rice/Config Related
 
-kwin-zones
 kde-wallpapers
 kwin-scripts-kzones
 tela-circle-icon-theme-purple
@@ -457,6 +456,12 @@ topgrade
 appstream-qt
 pacman-contrib
 pacman-bintrans
+
+### Xero Extras
+
+phpgui
+efibootmgrgui
+xero-wallpaper-browser
 
 #######################################################
 ###                  Libraries                      ###
